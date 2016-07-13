@@ -1,0 +1,16 @@
+* {
+  font-family: 'Lato', sans-serif !important; }
+
+.clean {
+  box-shadow: none !important;
+  background: transparent !important;
+  border: 0 !important; }
+
+.no-border {
+  border: 0 !important; }
+
+.reveal pre {
+  box-shadow: none; }
+  .reveal pre code,
+  .reveal pre code * {
+    font-family: monospace, 'Courier' !important; }

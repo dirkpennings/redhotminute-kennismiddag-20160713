@@ -1,0 +1,219 @@
+
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>HTTP/2</title>
+
+		<link href='https://fonts.googleapis.com/css?family=Lato:400,900,100,100italic,300,300italic,400italic,700,700italic,900italic' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/solarized.css">
+		<link rel="stylesheet" href="css/custom/custom.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<section>
+	<h2>HTTP/2</h2>
+
+	<img src="img/black-box.png">
+</section><section>
+
+	<section>
+		<h3>Video time!</h3>
+
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/r5oT_2ndjms" frameborder="0" allowfullscreen></iframe>
+
+		<p>
+			<a target="_blank" href="https://developer.chrome.com/devsummit/schedule">More info about Chrome DEV summit 2015</a>
+
+			<br />
+
+			<a target="_blank" href="https://www.youtube.com/watch?list=PLNYkxOF6rcICcHeQY02XLvoGL34rZFWZn&v=m2a9hlUFRhg">Alle video's</a>
+		</p>
+	</section>
+
+</section>
+<section>
+	<section>
+		<h3>Server implementations</h3>
+
+		<p>
+			<a href="https://github.com/http2/http2-spec/wiki/Implementations">HTTP/2 implementations</a>
+
+			<img src="img/github-http2-implementations.png">
+		</p>
+	</section>
+
+	<section>
+		<h3>Simple HTTP2 Server</h3>
+
+		<p>
+			<a href="https://github.com/GoogleChrome/simplehttp2server">Google Chrome's simplehttp2server</a>
+
+			<img src="img/github-simplehttp2server.png">
+		</p>
+	</section>
+
+	<section>
+		<h3>Binary releases</h3>
+
+		<p>
+			<a href="https://github.com/GoogleChrome/simplehttp2server/releases">Releases</a>
+
+			<img src="img/github-simplehttp2server-releases.png">
+		</p>
+	</section>
+
+	<section>
+		<h3>Installation</h3>
+
+		<p>
+			<ul>
+				<li>
+					Downloaded <a href="https://github.com/GoogleChrome/simplehttp2server/releases/download/2.2.0/simplehttp2server_darwin_amd64">this release</a> to <mark>$HOME/Sites/http2</mark>
+				</li>
+				<li>
+					Renamed it <pre><code>mv simplehttp2server_darwin_amd64 simplehttp2server</code></pre>
+				</li>
+				<li>
+					Next, I did a <pre><code>chmod +x simplehttp2server</code></pre>
+				</li>
+				<li>
+					Move to <mark>/usr/local/bin</mark>
+					<pre><code>mv simplehttp2server /usr/local/bin/simplehttp2server</code></pre>
+				</li>
+				<li>
+					Restart terminal (or open new tab)
+				</li>
+			</ul>
+		</p>
+	</section>
+
+	<section>
+		<h3>Push.json</h3>
+
+<pre>
+<code data-noescape>{
+	<mark>"/"</mark>: {
+		"/css/style.css": {
+			"type": "style",
+			"weight": 1
+		}
+	},
+
+	<mark>"/css/style.css"</mark>: {
+		"/css/bootstrap.min.css": {
+			"type": "style",
+			"weight": 2
+		}
+	}
+}
+</code>
+</pre>
+	</section>
+
+	<section>
+		<h3>Run it</h3>
+
+		<p><a href="https://localhost:5000" target="_blank">https://localhost:5000</a></p>
+
+<pre>
+<code data-trim>
+	➜ simplehttp2server
+	Generating certificate...
+	written cert.pem
+	written key.pem
+	Listening on https://localhost:5000...
+</code>
+</pre>
+	</section>
+
+	<section>
+		<h3>Twitter conversation</h3>
+
+		<p>
+			<img src="img/twitter-conversation-01.png">
+		</p>
+	</section>
+
+</section>
+<section>
+	<section>
+		<h3>Learnings</h3>
+
+		<p>
+			<ol>
+				<li class="fragment">
+					HTTP/2 only works over TLS (HTTPS)
+				</li>
+
+				<li class="fragment">
+					Enable Protocol column in network tab to see "h2"
+
+					<img src="img/devtools-enable-protocol.png">
+				</li>
+
+				<li class="fragment">
+					Don't use "Disable cache" in DEV Tools
+				</li>
+
+				<li class="fragment">
+					<a href="https://twitter.com/dassurma/status/748616497115836416" target="_blank">"Link:" headers is NOT how you do push</a>
+				</li>
+			</ol>
+		</p>
+	</section>
+</section><section>
+	<h2>Useful links</h2>
+
+	<ul>
+		<li>
+			<a target="_blank" href="https://github.com/dirkpennings/http2">
+				Demo used in the presentation
+			</a>
+		</li>
+		<li>
+			<a target="_blank" href="https://chrome.google.com/webstore/detail/http2-and-spdy-indicator/mpbpobfflnpcgagjijhmgnchggcjblin?hl=en">
+				Chrome extension for HTTP/2 / SPDY indication
+			</a>
+		</li>
+	</ul>
+</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
